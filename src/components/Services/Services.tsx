@@ -1,0 +1,103 @@
+import React from "react";
+import {
+  Box,
+  GridLegacy as Grid,
+  Typography,
+  useTheme,
+  useMediaQuery,
+  Stack,
+  Button,
+} from "@mui/material";
+
+import { services } from "../../constants/services";
+
+const Services = () => {
+  const theme = useTheme();
+  const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
+
+  return (
+    <Box component="section" sx={{ py: 10, px: 8, backgroundColor: "#F8F6F7" }}>
+      <Stack spacing={2} mb={6}>
+        <Typography
+          variant="h4"
+          fontWeight={700}
+          sx={{ fontSize: isMobile ? "1.8rem" : "2.2rem" }}
+        >
+          Сервис IKShop
+        </Typography>
+        <Typography variant="body1" color="text.secondary">
+          Мы не просто продаём одежду. Мы создаём опыт: от первого просмотра
+          коллекции — до финальной примерки. Каждая деталь важна: упаковка,
+          доставка, помощь стилиста, удобство возврата.
+        </Typography>
+      </Stack>
+
+      <Grid container spacing={4} mb={10}>
+        {services.map((item, index) => (
+          <Grid item xs={12} sm={6} md={3} key={index}>
+            <Box
+              sx={{
+                border: "1px solid #ddd",
+                p: 3,
+                height: "100%",
+                display: "flex",
+                flexDirection: "row",
+                alignItems: "flex-start",
+                gap: 2,
+                transition: "all 0.3s",
+                "&:hover": {
+                  borderColor: "#2e2e2e",
+                  transform: "scale(1.01)",
+                },
+              }}
+            >
+              {item.icon}
+              <Stack spacing={1}>
+                <Typography variant="subtitle1" fontWeight={600}>
+                  {item.title}
+                </Typography>
+                <Typography variant="body2" color="text.secondary">
+                  {item.description}
+                </Typography>
+              </Stack>
+            </Box>
+          </Grid>
+        ))}
+      </Grid>
+
+      <Box
+        sx={{
+          backgroundColor: "#F8F6F7",
+          border: "1px solid #ddd",
+          p: 4,
+          textAlign: "center",
+          mx: "auto",
+        }}
+      >
+        <Typography variant="h6" fontWeight={600} mb={1}>
+          Хочешь больше от IKShop?
+        </Typography>
+        <Typography variant="body2" color="text.secondary" mb={3}>
+          Подпишись на наш клуб и получи доступ к новым дропам, приватным
+          скидкам и персональным рекомендациям.
+        </Typography>
+        <Button
+          variant="contained"
+          size="large"
+          sx={{
+            bgcolor: "#2e2e2e",
+            color: "#fff",
+            px: 4,
+            py: 1.5,
+            textTransform: "none",
+            "&:hover": { bgcolor: "#444" },
+          }}
+        >
+          Присоединиться к IKClub
+        </Button>
+      </Box>
+    </Box>
+  );
+};
+
+export default Services;
