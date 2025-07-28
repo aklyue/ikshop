@@ -10,6 +10,8 @@ import {
   Stack,
 } from "@mui/material";
 
+import IntroBackground from "../../assets/Intro/IntroBackground.jpg"
+
 const Intro = () => {
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
@@ -27,7 +29,7 @@ const Intro = () => {
       sx={{
         height: "550px",
         width: "100%",
-        backgroundImage: `url('https://jjji.ru/1920x1080')`,
+        backgroundImage: `url('${IntroBackground}')`,
         backgroundSize: "cover",
         backgroundPosition: "center",
         position: "relative",

@@ -53,7 +53,7 @@ const Contacts = () => {
             direction="row"
             spacing={2}
             key={index}
-            alignItems="flex-start"
+            alignItems="center" 
           >
             {React.cloneElement(item.icon, {
               sx: { fontSize: 36, color: "#2e2e2e" },

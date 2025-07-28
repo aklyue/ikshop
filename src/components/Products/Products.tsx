@@ -31,7 +31,7 @@ const Products = () => {
               key={i}
               sx={{
                 flex: 1,
-                height: 300,
+                height: 400,
                 backgroundImage: `url(${product.image})`,
                 backgroundSize: "cover",
                 backgroundPosition: "center",
