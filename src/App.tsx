@@ -8,6 +8,9 @@ import Products from "./components/Products";
 import Contacts from "./components/Contacts";
 import Footer from "./components/UI/Footer";
 import { Box } from "@mui/material";
+import Map from "./components/UI/Map";
+import Reviews from "./components/Reviews";
+import Faq from "./components/Faq";
 
 function App() {
   return (
@@ -18,7 +21,10 @@ function App() {
       <Info />
       <Services />
       <Products />
+      <Reviews />
       <Contacts />
+      <Map />
+      <Faq />
       <Footer />
     </Box>
   );

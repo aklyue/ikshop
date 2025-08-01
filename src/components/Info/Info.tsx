@@ -19,7 +19,7 @@ const Info = () => {
   return (
     <Box
       component="section"
-      sx={{ py: 8, px: 8, backgroundColor: "#F8F6F7" }}
+      sx={{ py: 8, px: isMobile ? 2 : 8, backgroundColor: "#F8F6F7" }}
       id="aboutus"
     >
       <Typography
@@ -36,13 +36,19 @@ const Info = () => {
 
       <Grid container spacing={4}>
         {features.map((item, index) => (
-          <Grid item xs={12} sm={6} display="flex" key={index}>
+          <Grid
+            item
+            xs={12}
+            sm={6}
+            display="flex"
+            key={index}
+            component={motion.div}
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, amount: 0.2 }}
+            transition={{ duration: 0.3, delay: index * 0.1 }}
+          >
             <Box
-              component={motion.div}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: index * 0.1 }}
               sx={{
                 border: "1px solid #ddd",
                 p: 3,

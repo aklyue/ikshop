@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import {
   AppBar,
   Box,
@@ -8,19 +8,35 @@ import {
   useMediaQuery,
   useTheme,
   Stack,
+  IconButton,
+  Drawer,
+  List,
+  ListItem,
+  ListItemButton,
+  ListItemText,
 } from "@mui/material";
 
-import IntroBackground from "../../assets/Intro/IntroBackground.jpg"
+import IntroBackground from "../../assets/Intro/IntroBackground.jpg";
+import MenuIcon from "@mui/icons-material/Menu";
+
+import { menuItems } from "../../constants/menu";
 
 const Intro = () => {
   const theme = useTheme();
-  const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
+  const isMobile = useMediaQuery(theme.breakpoints.down("md"));
+
+  const [open, setOpen] = useState(false);
 
   const scrollToSection = (id: string) => {
     const el = document.getElementById(id);
     if (el) {
       el.scrollIntoView({ behavior: "smooth" });
     }
+  };
+
+  const handleMenuClick = (id: string) => {
+    scrollToSection(id);
+    setOpen(false);
   };
 
   return (
@@ -59,36 +75,41 @@ const Intro = () => {
           <Typography variant="h6" sx={{ color: "#fff", fontWeight: 600 }}>
             IKShop
           </Typography>
-          <Stack direction="row" spacing={2}>
-            <Button
-              color="inherit"
-              sx={{ color: "#fff", textTransform: "none" }}
-              onClick={() => scrollToSection("begin")}
-            >
-              Начало
-            </Button>
-            <Button
-              color="inherit"
-              sx={{ color: "#fff", textTransform: "none" }}
-              onClick={() => scrollToSection("aboutus")}
-            >
-              О нас
-            </Button>
-            <Button
-              color="inherit"
-              sx={{ color: "#fff", textTransform: "none" }}
-              onClick={() => scrollToSection("catalog")}
-            >
-              Каталог
-            </Button>
-            <Button
-              color="inherit"
-              sx={{ color: "#fff", textTransform: "none" }}
-              onClick={() => scrollToSection("contacts")}
-            >
-              Контакты
-            </Button>
-          </Stack>
+          {!isMobile ? (
+            <Stack direction="row" spacing={2}>
+              {menuItems.map((item) => (
+                <Button
+                  key={item.id}
+                  color="inherit"
+                  sx={{ color: "#fff", textTransform: "none" }}
+                  onClick={() => handleMenuClick(item.id)}
+                >
+                  {item.label}
+                </Button>
+              ))}
+            </Stack>
+          ) : (
+            <>
+              <IconButton
+                edge="end"
+                color="inherit"
+                onClick={() => setOpen(true)}
+              >
+                <MenuIcon sx={{ color: "#fff" }} />
+              </IconButton>
+              <Drawer anchor="right" open={open} onClose={() => setOpen(false)}>
+                <List sx={{ width: 250 }}>
+                  {menuItems.map((item) => (
+                    <ListItem key={item.id} disablePadding>
+                      <ListItemButton onClick={() => handleMenuClick(item.id)}>
+                        <ListItemText primary={item.label} />
+                      </ListItemButton>
+                    </ListItem>
+                  ))}
+                </List>
+              </Drawer>
+            </>
+          )}
         </Toolbar>
       </AppBar>
 

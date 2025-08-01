@@ -8,7 +8,7 @@ import {
   Stack,
   Button,
 } from "@mui/material";
-
+import { motion } from "framer-motion";
 import { services } from "../../constants/services";
 
 const Services = () => {
@@ -16,7 +16,7 @@ const Services = () => {
   const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
 
   return (
-    <Box component="section" sx={{ py: 10, px: 8, backgroundColor: "#F8F6F7" }}>
+    <Box component="section" sx={{ py: 10, px: isMobile ? 2 : 8, backgroundColor: "#F8F6F7" }}>
       <Stack spacing={2} mb={6}>
         <Typography
           variant="h4"
@@ -34,7 +34,18 @@ const Services = () => {
 
       <Grid container spacing={4} mb={10}>
         {services.map((item, index) => (
-          <Grid item xs={12} sm={6} md={3} key={index}>
+          <Grid
+            item
+            xs={12}
+            sm={6}
+            md={3}
+            key={index}
+            component={motion.div}
+            initial={{ opacity: 0, x: 50 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true, amount: 0.2 }}
+            transition={{ duration: 0.3, delay: index * 0.1 }}
+          >
             <Box
               sx={{
                 border: "1px solid #ddd",
@@ -47,7 +58,7 @@ const Services = () => {
                 transition: "all 0.3s",
                 "&:hover": {
                   borderColor: "#2e2e2e",
-                  transform: "scale(1.01)",
+                  backgroundColor: "#ffffff41",
                 },
               }}
             >

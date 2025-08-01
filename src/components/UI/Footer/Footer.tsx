@@ -7,10 +7,12 @@ import {
   IconButton,
   useTheme,
   useMediaQuery,
+  GridLegacy as Grid,
 } from "@mui/material";
 import InstagramIcon from "@mui/icons-material/Instagram";
 import TelegramIcon from "@mui/icons-material/Telegram";
 import FacebookIcon from "@mui/icons-material/Facebook";
+import { menuItems } from "../../../constants/menu";
 
 const Footer = () => {
   const theme = useTheme();
@@ -22,7 +24,7 @@ const Footer = () => {
       sx={{
         backgroundColor: "#2e2e2e",
         color: "#F8F6F7",
-        px: isMobile ? 4 : 8,
+        px: isMobile ? 2 : 8,
         py: 6,
         mt: 8,
       }}
@@ -42,22 +44,37 @@ const Footer = () => {
         </Box>
 
         <Box>
-          <Stack direction="row" spacing={3} mb={1}>
-            <Link href="#begin" underline="hover" color="inherit">
-              Начало
-            </Link>
-            <Link href="#aboutus" underline="hover" color="inherit">
-              О нас
-            </Link>
-            <Link href="#catalog" underline="hover" color="inherit">
-              Каталог
-            </Link>
-            <Link href="#contacts" underline="hover" color="inherit">
-              Контакты
-            </Link>
-          </Stack>
+          {isMobile ? (
+            <Grid container spacing={1}>
+              {menuItems.map((item) => (
+                <Grid item xs={6} key={item.label}>
+                  <Link
+                    href={item.id}
+                    underline="hover"
+                    color="inherit"
+                    variant="body2"
+                  >
+                    {item.label}
+                  </Link>
+                </Grid>
+              ))}
+            </Grid>
+          ) : (
+            <Stack direction="row" spacing={3} mb={1}>
+              {menuItems.map((item) => (
+                <Link
+                  key={item.label}
+                  href={item.id}
+                  underline="hover"
+                  color="inherit"
+                >
+                  {item.label}
+                </Link>
+              ))}
+            </Stack>
+          )}
 
-          <Stack direction="row" spacing={2} justifyContent={"flex-end"}>
+          <Stack direction="row" spacing={2} justifyContent="flex-end" mt={2}>
             <IconButton color="inherit">
               <InstagramIcon />
             </IconButton>

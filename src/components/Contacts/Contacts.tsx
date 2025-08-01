@@ -37,9 +37,10 @@ const Contacts = () => {
       component="section"
       sx={{
         py: 8,
-        px: isMobile ? 4 : 8,
+        px: isMobile ? 2 : 8,
         backgroundColor: "#F8F6F7",
         display: "flex",
+        flexDirection: isMobile ? "column" : "row",
         gap: 4,
       }}
     >
@@ -49,12 +50,7 @@ const Contacts = () => {
         </Typography>
 
         {contactItems.map((item, index) => (
-          <Stack
-            direction="row"
-            spacing={2}
-            key={index}
-            alignItems="center" 
-          >
+          <Stack direction="row" spacing={2} key={index} alignItems="center">
             {React.cloneElement(item.icon, {
               sx: { fontSize: 36, color: "#2e2e2e" },
             })}

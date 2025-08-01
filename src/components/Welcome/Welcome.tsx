@@ -17,7 +17,7 @@ const Welcome = () => {
       component="section"
       sx={{
         py: 8,
-        px: 8,
+        px: isMobile ? 2 : 8,
         backgroundColor: "#F8F6F7",
       }}
     >
