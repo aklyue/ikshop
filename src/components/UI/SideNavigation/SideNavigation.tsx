@@ -23,16 +23,22 @@ const navVariants = {
   exit: { opacity: 0, x: 100, transition: { duration: 0.2 } },
 };
 
+const menuButtonVariants = {
+  hidden: { opacity: 0, x: 100 },
+  visible: { opacity: 1, x: 0, transition: { duration: 0.2 } },
+  exit: { opacity: 0, x: 100, transition: { duration: 0.2 } },
+};
+
 const SideNavigation = () => {
   const theme = useTheme();
-  const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
+  const isMobile = useMediaQuery(theme.breakpoints.down("md"));
 
   const [visible, setVisible] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
-      setVisible(window.scrollY >= 400);
+      setVisible(window.scrollY >= 550);
     };
 
     window.addEventListener("scroll", handleScroll);
@@ -59,33 +65,42 @@ const SideNavigation = () => {
 
   return (
     <>
-      {isMobile && visible && (
-        <Box
-          sx={{
-            position: "fixed",
-            bottom: 20,
-            right: 20,
-            zIndex: 1000,
-          }}
-        >
-          <IconButton
-            sx={{
-              backgroundColor: "rgba(0,0,0,0.6)",
-              color: "#fff",
-              backdropFilter: "blur(4px)",
-              "&:hover": { backgroundColor: "rgba(0,0,0,0.8)" },
-            }}
-            onClick={() => setMenuOpen((prev) => !prev)}
-          >
-            {menuOpen ? <CloseRoundedIcon /> : <MenuRoundedIcon />}
-          </IconButton>
-        </Box>
-      )}
-
       <AnimatePresence>
-        {(menuOpen || (!isMobile && visible)) && (
+        {isMobile && visible && (
           <Box
             component={motion.div}
+            key="menu-button"
+            variants={menuButtonVariants}
+            initial="hidden"
+            animate="visible"
+            exit="exit"
+            sx={{
+              position: "fixed",
+              bottom: 20,
+              right: 20,
+              zIndex: 1000,
+            }}
+          >
+            <IconButton
+              sx={{
+                backgroundColor: "rgba(0,0,0,0.6)",
+                color: "#fff",
+                backdropFilter: "blur(4px)",
+                "&:hover": { backgroundColor: "rgba(0,0,0,0.8)" },
+              }}
+              onClick={() => setMenuOpen((prev) => !prev)}
+            >
+              {menuOpen ? <CloseRoundedIcon /> : <MenuRoundedIcon />}
+            </IconButton>
+          </Box>
+        )}
+      </AnimatePresence>
+
+      <AnimatePresence>
+        {((menuOpen && visible) || (!isMobile && visible)) && (
+          <Box
+            component={motion.div}
+            key="side-nav"
             variants={navVariants}
             initial="hidden"
             animate="visible"

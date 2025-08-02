@@ -13,10 +13,13 @@ import { services } from "../../constants/services";
 
 const Services = () => {
   const theme = useTheme();
-  const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
+  const isMobile = useMediaQuery(theme.breakpoints.down("md"));
 
   return (
-    <Box component="section" sx={{ py: 10, px: isMobile ? 2 : 8, backgroundColor: "#F8F6F7" }}>
+    <Box
+      component="section"
+      sx={{ py: 10, px: isMobile ? 2 : 8, backgroundColor: "#F8F6F7" }}
+    >
       <Stack spacing={2} mb={6}>
         <Typography
           variant="h4"
@@ -41,7 +44,7 @@ const Services = () => {
             md={3}
             key={index}
             component={motion.div}
-            initial={{ opacity: 0, x: 50 }}
+            initial={{ opacity: 0, x: isMobile ? 16 : 50 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true, amount: 0.2 }}
             transition={{ duration: 0.3, delay: index * 0.1 }}

@@ -65,7 +65,10 @@ function Slider() {
             onSwiper={initialize}
             spaceBetween={10}
             slidesPerView={isMobile ? 1 : 3}
-            style={{ padding: isMobile ? "0" : "5px", overflow: "visible" }}
+            style={{
+              padding: isMobile ? "0" : "5px",
+              overflow: "visible",
+            }}
             loop
             autoplay={{ delay: 3000, disableOnInteraction: false }}
             effect={isMobile ? undefined : "coverflow"}
@@ -139,9 +142,8 @@ function Slider() {
               onClick={slidePrev}
               sx={{
                 position: "absolute",
-                top: "80%",
-                left: 16,
-                transform: "translateY(-50%)",
+                top: "90%",
+                right: "55%",
                 backgroundColor: "rgba(0, 0, 0, 0.0)",
                 "&:hover": { backgroundColor: "rgba(0, 0, 0, 0.1)" },
                 zIndex: 2,
@@ -153,9 +155,8 @@ function Slider() {
               onClick={slideNext}
               sx={{
                 position: "absolute",
-                top: "80%",
-                right: 16,
-                transform: "translateY(-50%)",
+                top: "90%",
+                left: "55%",
                 backgroundColor: "rgba(0, 0, 0, 0.0)",
                 "&:hover": { backgroundColor: "rgba(0, 0, 0, 0.1)" },
                 zIndex: 2,

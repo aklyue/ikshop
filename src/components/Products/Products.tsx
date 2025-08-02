@@ -30,13 +30,17 @@ const Products = () => {
       {isMobile ? (
         <Grid container spacing={2}>
           {products.map((product, i) => (
-            <Grid item xs={6} key={i}>
+            <Grid
+              item
+              xs={6}
+              key={i}
+              component={motion.div}
+              initial={{ opacity: 0, x: isMobile ? 16 : 50 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true, amount: 0.2 }}
+              transition={{ duration: 0.3, delay: i * 0.1 }}
+            >
               <Box
-                component={motion.div}
-                initial={{ opacity: 0, x: 50 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                viewport={{ once: true, amount: 0.2 }}
-                transition={{ duration: 0.3, delay: i * 0.1 }}
                 sx={{
                   height: 300,
                   backgroundImage: `url(${product.image})`,

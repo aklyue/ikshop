@@ -14,17 +14,25 @@ import Faq from "./components/Faq";
 
 function App() {
   return (
-    <Box bgcolor={"#F8F6F7"}>
+    <Box>
       <Intro />
-      <SideNavigation />
-      <Welcome />
-      <Info />
-      <Services />
-      <Products />
-      <Reviews />
-      <Contacts />
-      <Map />
-      <Faq />
+      <Box
+        sx={{
+          bgcolor: "#F8F6F7",
+          maxWidth: 2000,
+          mx: "auto",
+        }}
+      >
+        <SideNavigation />
+        <Welcome />
+        <Info />
+        <Services />
+        <Products />
+        <Reviews />
+        <Contacts />
+        <Map />
+        <Faq />
+      </Box>
       <Footer />
     </Box>
   );
