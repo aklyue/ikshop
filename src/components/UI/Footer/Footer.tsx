@@ -11,12 +11,16 @@ import {
 } from "@mui/material";
 import InstagramIcon from "@mui/icons-material/Instagram";
 import TelegramIcon from "@mui/icons-material/Telegram";
-import FacebookIcon from "@mui/icons-material/Facebook";
+import WhatsAppIcon from "@mui/icons-material/WhatsApp";
 import { menuItems } from "../../../constants/menu";
+
+import { ReactComponent as Logo } from "../../../assets/Logo/logo.svg";
+import useScroll from "../../../hooks/useScroll";
 
 const Footer = () => {
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down("md"));
+  const { handleMenuClick } = useScroll();
 
   return (
     <Box
@@ -35,9 +39,20 @@ const Footer = () => {
         spacing={isMobile ? 3 : 0}
       >
         <Box>
-          <Typography variant="h6" fontWeight={600}>
-            IKShop
-          </Typography>
+          <Box
+            sx={{
+              display: "flex",
+              alignItems: "center",
+              gap: 1,
+            }}
+          >
+            <Box>
+              <Logo width={30} height={30} color="white" />
+            </Box>
+            <Typography variant="h6" fontWeight={600}>
+              IKShop
+            </Typography>
+          </Box>
           <Typography variant="body2" color="rgba(255,255,255,0.7)" mt={1}>
             Современный онлайн-магазин одежды. Твоя мода — твои правила.
           </Typography>
@@ -49,10 +64,11 @@ const Footer = () => {
               {menuItems.map((item) => (
                 <Grid item xs={6} key={item.label}>
                   <Link
-                    href={item.id}
+                    onClick={() => handleMenuClick(item.id)}
                     underline="hover"
                     color="inherit"
                     variant="body2"
+                    sx={{ cursor: "pointer" }}
                   >
                     {item.label}
                   </Link>
@@ -64,9 +80,10 @@ const Footer = () => {
               {menuItems.map((item) => (
                 <Link
                   key={item.label}
-                  href={item.id}
+                  onClick={() => handleMenuClick(item.id)}
                   underline="hover"
                   color="inherit"
+                  sx={{ cursor: "pointer" }}
                 >
                   {item.label}
                 </Link>
@@ -75,14 +92,26 @@ const Footer = () => {
           )}
 
           <Stack direction="row" spacing={2} justifyContent="flex-end" mt={2}>
-            <IconButton color="inherit">
+            <IconButton
+              color="inherit"
+              href="https://www.instagram.com/ik_shop6"
+              target="_blank"
+            >
               <InstagramIcon />
             </IconButton>
-            <IconButton color="inherit">
+            <IconButton
+              color="inherit"
+              href="https://www.instagram.com/ik_shop6"
+              target="_blank"
+            >
               <TelegramIcon />
             </IconButton>
-            <IconButton color="inherit">
-              <FacebookIcon />
+            <IconButton
+              color="inherit"
+              href="https://wa.me/77052314693"
+              target="_blank"
+            >
+              <WhatsAppIcon />
             </IconButton>
           </Stack>
         </Box>

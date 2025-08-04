@@ -20,27 +20,19 @@ import IntroBackground from "../../assets/Intro/IntroBackground.jpg";
 import MenuIcon from "@mui/icons-material/Menu";
 
 import { menuItems } from "../../constants/menu";
+import useScroll from "../../hooks/useScroll";
+
+import { ReactComponent as Logo } from "../../assets/Logo/logo.svg";
 
 const Intro = () => {
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down("md"));
 
-  const [open, setOpen] = useState(false);
-
-  const scrollToSection = (id: string) => {
-    const el = document.getElementById(id);
-    if (el) {
-      el.scrollIntoView({ behavior: "smooth" });
-    }
-  };
-
-  const handleMenuClick = (id: string) => {
-    scrollToSection(id);
-    setOpen(false);
-  };
+  const { open, setOpen, handleMenuClick } = useScroll();
 
   return (
     <Box
+      id="intro"
       component="section"
       sx={{
         height: "550px",
@@ -72,9 +64,19 @@ const Intro = () => {
         }}
       >
         <Toolbar disableGutters sx={{ justifyContent: "space-between" }}>
-          <Typography variant="h6" sx={{ color: "#fff", fontWeight: 600 }}>
-            IKShop
-          </Typography>
+          <Box
+            sx={{
+              display: "flex",
+              alignItems: "center",
+            }}
+          >
+            <IconButton>
+              <Logo width={30} height={30} color="white" />
+            </IconButton>{" "}
+            <Typography variant="h6" sx={{ color: "#fff", fontWeight: 600 }}>
+              IKShop
+            </Typography>
+          </Box>
           {!isMobile ? (
             <Stack direction="row" spacing={2}>
               {menuItems.map((item) => (

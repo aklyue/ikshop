@@ -10,26 +10,13 @@ import {
 } from "@mui/material";
 
 import { contactItems } from "../../constants/contacts";
+import useContacts from "../../hooks/useContacts";
 
 const Contacts = () => {
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down("md"));
-  const [formData, setFormData] = useState({
-    name: "",
-    email: "",
-    message: "",
-  });
 
-  const handleChange =
-    (field: string) => (e: React.ChangeEvent<HTMLInputElement>) => {
-      setFormData({ ...formData, [field]: e.target.value });
-    };
-
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    console.log("Отправлено:", formData);
-    // здесь можешь подключить emailjs или API
-  };
+  const { formData, handleChange, handleSubmit } = useContacts();
 
   return (
     <Box

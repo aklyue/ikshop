@@ -53,7 +53,7 @@ const Services = () => {
               sx={{
                 border: "1px solid #ddd",
                 p: 3,
-                height: "100%",
+                height: isMobile ? undefined : "100%",
                 display: "flex",
                 flexDirection: "row",
                 alignItems: "flex-start",
@@ -96,6 +96,8 @@ const Services = () => {
           скидкам и персональным рекомендациям.
         </Typography>
         <Button
+          href="https://www.instagram.com/ik_shop6"
+          target="_blank"
           variant="contained"
           size="large"
           sx={{

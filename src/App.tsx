@@ -7,12 +7,36 @@ import Services from "./components/Services";
 import Products from "./components/Products";
 import Contacts from "./components/Contacts";
 import Footer from "./components/UI/Footer";
-import { Box } from "@mui/material";
+import { Box, CircularProgress } from "@mui/material";
 import Map from "./components/UI/Map";
 import Reviews from "./components/Reviews";
 import Faq from "./components/Faq";
+import useLoader from "./hooks/useLoader";
 
 function App() {
+  const loading = useLoader();
+
+  if (loading) {
+    return (
+      <Box
+        sx={{
+          position: "fixed",
+          top: 0,
+          left: 0,
+          width: "100vw",
+          height: "100vh",
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+          backgroundColor: "#F8F6F7",
+          zIndex: 9999,
+        }}
+      >
+        <CircularProgress sx={{ color: "#2E2E2E" }} />
+      </Box>
+    );
+  }
+
   return (
     <Box>
       <Intro />
