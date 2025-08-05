@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import {
   AppBar,
   Box,
@@ -29,6 +29,14 @@ const Intro = () => {
   const isMobile = useMediaQuery(theme.breakpoints.down("md"));
 
   const { open, setOpen, handleMenuClick } = useScroll();
+
+  useEffect(() => {
+    const link = document.createElement("link");
+    link.rel = "preload";
+    link.as = "image";
+    link.href = IntroBackground;
+    document.head.appendChild(link);
+  }, []);
 
   return (
     <Box

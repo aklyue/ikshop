@@ -81,11 +81,11 @@ function Map() {
               variant="body1"
               sx={{
                 mb: 1,
-                color: index === 6 ? "error.main" : "text.primary",
-                fontWeight: index === 6 ? 600 : "normal",
+                color: index === 6 || index === 0 ? "error.main" : "text.primary",
+                fontWeight: index === 6 || index === 0 ? 600 : "normal",
               }}
             >
-              {day}: {index === 6 ? "Выходной" : "09:00 – 18:00"}
+              {day}: {index === 6 || index === 0 ? "Выходной" : "09:00 – 18:00"}
             </Typography>
           ))}
         </Box>
