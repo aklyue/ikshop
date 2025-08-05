@@ -35,6 +35,7 @@ const Intro = () => {
     link.rel = "preload";
     link.as = "image";
     link.href = IntroBackground;
+    link.type = "image/webp";
     document.head.appendChild(link);
   }, []);
 
