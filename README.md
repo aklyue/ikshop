@@ -1,46 +1,76 @@
-# Getting Started with Create React App
+# IKShop — E-Commerce Web Application 🛒✨
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Современное кроссплатформенное веб-приложение для интернет-магазина (электронной коммерции). Проект разработан на базе React и TypeScript, предоставляя пользователям удобный и быстрый интерфейс для покупок.
 
-## Available Scripts
+## 🚀 Основной функционал
 
-In the project directory, you can run:
+* **Каталог товаров:** Интерактивный вывод карточек товаров с возможностью фильтрации, поиска и сортировки по категориям/ценам.
+* **Корзина покупок:** Динамическое управление заказами (добавление, удаление, изменение количества товаров) с мгновенным пересчетом стоимости.
+* **Строгая типизация:** Использование TypeScript сводит к минимуму ошибки на этапе разработки и упрощает масштабирование кодовой базы.
+* **Оптимизированная сборка:** Быстрая загрузка страниц и минимизация бандла благодаря встроенным механизмам Create React App.
 
-### `npm start`
+## 🛠 Технологический стек
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+* **Frontend Framework:** React.js
+* **Язык программирования:** TypeScript (93%+)
+* **Стили и разметка:** HTML5, CSS3 / CSS-модули
+* **Управление состоянием (рекомендуется):** Redux Toolkit / Context API
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+## 📂 Структура проекта
 
-### `npm test`
+```text
+├── public/             # Статические ресурсы (Favicon, манифест, index.html)
+├── src/                # Исходный код приложения
+│   ├── components/     # Переиспользуемые UI-компоненты (Кнопки, Карточки товаров, Корзина)
+│   ├── pages/          # Основные экраны (Главная, Каталог, Страница товара, Оформление заказа)
+│   ├── hooks/          # Кастомные React-хуки для бизнес-логики
+│   ├── types/          # Описание интерфейсов и типов TypeScript (Product, CartItem, User)
+│   ├── assets/         # Локальные стили, шрифты и изображения
+│   └── index.tsx       # Главная точка входа приложения
+├── package.json        # Скрипты автоматизации и зависимости проекта
+└── tsconfig.json       # Конфигурация компилятора TypeScript
+```
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## ⚙️ Инструкция по локальной разработке
 
-### `npm run build`
+### Требования
+Убедитесь, что на вашем компьютере установлен [Node.js](https://nodejs.org) версии 18 или выше.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+### Установка и запуск
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+1. Склонируйте репозиторий:
+   ```bash
+   git clone https://github.com
+   cd ikshop
+   ```
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+2. Установите необходимые зависимости проекта:
+   ```bash
+   npm install
+   ```
 
-### `npm run eject`
+3. Запустите сервер для разработки:
+   ```bash
+   npm start
+   ```
+   После запуска проект автоматически откроется в браузере по адресу [http://localhost:3000](http://localhost:3000). Страница будет автоматически перезагружаться при внесении изменений в код.
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+### Тестирование проекта
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+Для запуска тестов в интерактивном режиме выполните:
+```bash
+npm test
+```
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+## 🏗️ Сборка для продакшена
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+Чтобы скомпилировать проект в оптимизированные статические файлы для деплоя на боевой сервер (Nginx, Vercel, Netlify), выполните:
 
-## Learn More
+```bash
+npm run build
+```
+Готовые минифицированные файлы появятся в директории `build/`. Файлы кэшируются на стороне клиента благодаря уникальным хэшам в именах.
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+## 📄 Лицензия
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+Проект является частью персонального портфолио. Все права защищены. Разрешено использование кода в демонстрационных и обучающих целях.
